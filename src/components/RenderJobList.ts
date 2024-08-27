@@ -3,7 +3,7 @@ import { JobState } from "../state/jobState.js";
 import { JobItem } from "./JobItem.js";
 import { FilterState } from "../state/filterState.js";
 
-export class JobList extends Component<HTMLDivElement, HTMLUListElement> {
+export class RenderJobList extends Component<HTMLDivElement, HTMLUListElement> {
   private jobs: JobState;
   private filter: FilterState;
 

@@ -1,4 +1,4 @@
-import { BtnType, Filter } from "../models/filter.js";
+import { BtnType } from "../models/filter.js";
 import { Component } from "./Component.js";
 import { Button } from "./Button.js";
 import { removeFilterHandler } from "../handlers/removeFilterHandler.js";

@@ -1,4 +1,3 @@
-import { addFilterHandler } from "../handlers/addFilterHandler.js";
 import { BtnType } from "../models/filter.js";
 
 type Handler = (content: string, feature: BtnType) => void;

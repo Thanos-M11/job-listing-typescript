@@ -1,4 +1,4 @@
-import { Filter } from "../models/filter";
+import { Filter } from "../models/filter.js";
 
 type FilterListener = (filter: Filter) => void;
 
