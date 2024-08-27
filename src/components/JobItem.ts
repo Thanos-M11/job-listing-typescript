@@ -1,8 +1,8 @@
-import { addFilterHandler } from "../handlers/addFilterHandler.js";
-import { BtnType } from "../models/filter.js";
-import { Job } from "../models/job.js";
-import { Button } from "./Button.js";
-import { Component } from "./Component.js";
+import { addFilterHandler } from "../handlers/addFilterHandler";
+import { BtnType } from "../models/filter";
+import { Job } from "../models/job";
+import { Button } from "./Button";
+import { Component } from "./Component";
 
 export class JobItem extends Component<HTMLUListElement, HTMLLIElement> {
   constructor(private job: Job) {

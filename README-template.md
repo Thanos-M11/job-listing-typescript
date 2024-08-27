@@ -1,20 +1,31 @@
 # Frontend Mentor - Job listings with filtering solution
 
-This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Job listings with filtering challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt).
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [Frontend Mentor - Job listings with filtering solution](#frontend-mentor---job-listings-with-filtering-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Interfaces](#interfaces)
+    - [State management](#state-management)
+    - [Components](#components)
+      - [`Component.ts`](#componentts)
+      - [`Button.ts`](#buttonts)
+      - [`RenderFilter.ts`](#renderfilterts)
+      - [`RenderJobList.ts`](#renderjoblistts)
+      - [`JobItem.ts`](#jobitemts)
+      - [`RenderHeader.ts`](#renderheaderts)
+      - [`RenderFooter.ts`](#renderfooterts)
+    - [Built with](#built-with)
+    - [](#)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+  - [Author](#author)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -22,7 +33,7 @@ This is a solution to the [Job listings with filtering challenge on Frontend Men
 
 ### The challenge
 
-Users should be able to:
+Users are able to:
 
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
@@ -32,14 +43,6 @@ Users should be able to:
 
 ![](./screenshot.jpg)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
@@ -47,66 +50,240 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ## My process
 
+The whole approach is completely object oriented. The whole idea is to design skeleton templates and use clean and dry code to instanciate objects according to the operation as show in the `app.ts`
+
+```typescript
+// app.ts
+import { RenderHeader } from "./components/RenderHeader.js";
+import { RenderFooter } from "./components/RenderFooter.js";
+import { RenderJobList } from "./components/RenderJobList.js";
+import { RenderFilter } from "./components/RenderFilter.js";
+import { filterState } from "./state/filterState.js";
+import { jobState } from "./state/jobState.js";
+
+function App() {
+  new RenderHeader();
+  new RenderFilter(filterState);
+  new RenderJobList(jobState, filterState);
+  new RenderFooter();
+}
+
+App();
+```
+
+### Interfaces
+
+- created two main interfaces `Filter` and `Job` under `models`
+
+### State management
+
+- created two `state` classes that is the `filterState` and the `jobState`
+  - both `states`:
+    - are singleton (have a private constructor)
+    - have a `listener` array
+    - have an `addListener` function
+    - have a `notifyListener` function
+    - have a getter and a setter function.
+  - the `filterState`:
+    - has also a `clearFilter` fn and an `isEmpty` fn that checks two params and returns `true` or `false` if the filter is empty or not.
+  - the `jobState` :
+    - has also a `getFilteredJobs` fn to return an array of jobs according to a `filter`.
+
+### Components
+
+#### `Component.ts`
+
+`Component` is an abstract generic class with a main functionality to render a template under a host.
+
+- It receives:
+
+  - a `templateId`
+  - a `hostElementId`
+  - a `insertAtStart` boolean param and
+  - a `clonedElementId`
+
+- It clones in memory the first child of the template content.
+- It assigns an `id` in the `clonedElement`
+- It uses the `attach` fn to insert the clonedElement to the `hostElement`.
+
+#### `Button.ts`
+
+This `button` component is a flexible `button`
+
+1. It receives:
+
+- `hostId`
+- `content`
+- `className`
+- `handlerFn` callback function for a `click` event
+- `feature` which categorises the button
+- `removeWrapper` which is a boolean prop to be used to wrap the button with a remove icon.
+
+2. It adds an event listener and binds the handler function
+3. Runs the `renderRemoveWrapper` fn if the equivalent boolean `removeWrapper` is `true`
+4. Adds the styling class to the button element
+5. Sets the content of the element
+6. attaches the button to the host
+
+#### `RenderFilter.ts`
+
+- Inherits the `Component` class
+- adds a listener to the `FilterState` class and renders the filters according to the filter state by instantiating a new button component for every filter type.
+- The filter bar is rendered if the filter is not empty.
+
+#### `RenderJobList.ts`
+
+- Inherits the `Component` class
+- adds a listener to the `FilterState` class and a listener to the `JobState` class and renders the jobs according to the filters state by calling the `getFilteredJobs`
+
+#### `JobItem.ts`
+
+- Inherits the `Component` class
+- gets the template markup with id: `temp-job-item`
+- clones and comnfigures the element
+- adds new button components to act as filters
+
+#### `RenderHeader.ts`
+
+- Inherits the `Component` class
+- renders the header template
+
+#### `RenderFooter.ts`
+
+- Inherits the `Component` class
+- renders the Footer template
+
 ### Built with
 
-- Semantic HTML5 markup
+- Semantic HTML5 markup using templates
 - CSS custom properties
-- Flexbox
-- CSS Grid
+- Flexbox, CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- Typescript
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+###
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- Had the chance to practice the observer design pattern in Typescript combined with the singleton pattern.
 
-To see how you can add code snippets, see below:
+```typescript
+import { Filter } from "../models/filter.js";
 
-```html
-<h1>Some HTML code I'm proud of</h1>
+type FilterListener = (filter: Filter) => void;
+
+export class FilterState {
+  private listeners: FilterListener[] = [];
+  private initialState: Filter = {
+    role: "",
+    level: "",
+    languages: [],
+    tools: [],
+  };
+
+  private filter: Filter = this.initialState;
+  private static instance: FilterState;
+
+  private constructor() {}
+
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new FilterState();
+    return this.instance;
+  }
+
+  public addListener(listener: FilterListener) {
+    this.listeners.push(listener);
+  }
+
+  public notifyListeners() {
+    this.listeners.forEach((listener) => listener(this.filter));
+  }
+
+  public getFilter(): Filter {
+    return this.filter;
+  }
+
+  public setFilter(filter: Filter): void {
+    this.filter = { ...this.filter, ...filter };
+    this.notifyListeners();
+  }
+
+  public clearFilter(): void {
+    this.filter = this.initialState;
+    this.notifyListeners();
+  }
+
+  public isEmpty(): boolean {
+    if (Object.keys(this.filter).length === 0) {
+      return true;
+    } else {
+      return (
+        Object.values(this.filter).reduce((acc, cur) => acc + cur.length, 0) ===
+        0
+      );
+    }
+  }
+}
+
+export const filterState = FilterState.getInstance();
 ```
-```css
-.proud-of-this-css {
-  color: papayawhip;
+
+- Used an abstract Component class.
+
+```typescript
+export abstract class Component<T extends HTMLElement, U extends HTMLElement> {
+  templateElement: HTMLTemplateElement;
+  hostElement: T;
+  cloneElement: U;
+
+  constructor(
+    templateId: string,
+    hostElementId: string,
+    insertAtStart: boolean,
+    clonedElementId?: string
+  ) {
+    this.templateElement = document.getElementById(
+      templateId
+    )! as HTMLTemplateElement;
+    this.hostElement = document.getElementById(hostElementId)! as T;
+
+    const importedNode = document.importNode(
+      this.templateElement.content,
+      true
+    );
+
+    this.cloneElement = importedNode.firstElementChild as U;
+    if (clonedElementId) {
+      this.cloneElement.id = clonedElementId;
+    }
+
+    this.attach(insertAtStart);
+  }
+
+  private attach(insertAtBeginning: boolean) {
+    this.hostElement.insertAdjacentElement(
+      insertAtBeginning ? "afterbegin" : "beforeend",
+      this.cloneElement
+    );
+  }
+
+  abstract configureClonedElement(): void;
+  abstract renderContent(): void;
 }
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- Factory pattern
+- Visitor pattern
+- Strategy pattern
+- Decorator pattern
+- Facade pattern
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Thanos Kalaitzis](https://thanosdev.netlify.app/homepage)
+- Frontend Mentor - [@Thanos-M11](https://www.frontendmentor.io/profile/Thanos-M11)

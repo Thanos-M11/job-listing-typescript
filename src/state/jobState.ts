@@ -1,6 +1,6 @@
-import { DATA } from "../data/data.js";
-import { Filter } from "../models/filter.js";
-import { Job } from "../models/job.js";
+import { DATA } from "../data/data";
+import { Filter } from "../models/filter";
+import { Job } from "../models/job";
 
 type JobListener = (jobs: Job[]) => void;
 

@@ -1,5 +1,5 @@
-import { BtnType } from "../models/filter.js";
-import { filterState } from "../state/filterState.js";
+import { BtnType } from "../models/filter";
+import { filterState } from "../state/filterState";
 
 export function removeFilterHandler(content: string, feature: BtnType) {
   switch (feature) {

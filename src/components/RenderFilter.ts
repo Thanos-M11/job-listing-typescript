@@ -1,8 +1,8 @@
-import { BtnType } from "../models/filter.js";
-import { Component } from "./Component.js";
-import { Button } from "./Button.js";
-import { removeFilterHandler } from "../handlers/removeFilterHandler.js";
-import { FilterState, filterState } from "../state/filterState.js";
+import { BtnType } from "../models/filter";
+import { Component } from "./Component";
+import { Button } from "./Button";
+import { removeFilterHandler } from "../handlers/removeFilterHandler";
+import { FilterState, filterState } from "../state/filterState";
 
 export class RenderFilter extends Component<HTMLDivElement, HTMLElement> {
   private filter: FilterState;

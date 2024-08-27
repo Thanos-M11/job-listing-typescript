@@ -1,9 +1,9 @@
-import { RenderHeader } from "./components/RenderHeader.js";
-import { RenderFooter } from "./components/RenderFooter.js";
-import { RenderJobList } from "./components/RenderJobList.js";
-import { RenderFilter } from "./components/RenderFilter.js";
-import { filterState } from "./state/filterState.js";
-import { jobState } from "./state/jobState.js";
+import { RenderHeader } from "./components/RenderHeader";
+import { RenderFooter } from "./components/RenderFooter";
+import { RenderJobList } from "./components/RenderJobList";
+import { RenderFilter } from "./components/RenderFilter";
+import { filterState } from "./state/filterState";
+import { jobState } from "./state/jobState";
 
 function App() {
   new RenderHeader();

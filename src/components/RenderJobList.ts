@@ -1,7 +1,7 @@
-import { Component } from "./Component.js";
-import { JobState } from "../state/jobState.js";
-import { JobItem } from "./JobItem.js";
-import { FilterState } from "../state/filterState.js";
+import { Component } from "./Component";
+import { JobState } from "../state/jobState";
+import { JobItem } from "./JobItem";
+import { FilterState } from "../state/filterState";
 
 export class RenderJobList extends Component<HTMLDivElement, HTMLUListElement> {
   private jobs: JobState;

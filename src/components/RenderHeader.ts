@@ -1,4 +1,4 @@
-import { Component } from "./Component.js";
+import { Component } from "./Component";
 
 export class RenderHeader extends Component<HTMLDivElement, HTMLElement> {
   constructor() {
