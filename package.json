@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --config webpack.config.prod.js",
-    "deploy": "gh-pages -d dist"
+    "build": "webpack --config webpack.config.prod.js"
   },
   "author": "",
   "license": "ISC",

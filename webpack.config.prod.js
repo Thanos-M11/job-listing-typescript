@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/https://github.com/Thanos-M11/job-listing-typescript/",
+    publicPath: "/dist/",
   },
   module: {
     rules: [
