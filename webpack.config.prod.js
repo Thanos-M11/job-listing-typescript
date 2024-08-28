@@ -5,20 +5,21 @@ module.exports = {
   mode: "production",
   entry: "./src/app.ts",
   devServer: {
-    static: [
-      {
-        directory: path.join(__dirname),
-      },
-    ],
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+    historyApiFallback: true,
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath:
+      "/https://github.com/Thanos-M11/job-listing-typescript/tree/webpackProduction/",
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },
