@@ -22,7 +22,6 @@ This is a solution to the [Job listings with filtering challenge on Frontend Men
       - [`RenderHeader.ts`](#renderheaderts)
       - [`RenderFooter.ts`](#renderfooterts)
     - [Built with](#built-with)
-    - [](#)
     - [What I learned](#what-i-learned)
     - [Continued development](#continued-development)
   - [Author](#author)
@@ -41,16 +40,25 @@ Users are able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![desktop with filters on ](./design/job_listing_filters.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution in github](https://github.com/Thanos-M11/job-listing-typescript)
+- Live Site URL: [in progress...]()
 
 ## My process
 
-The whole approach is completely object oriented. The whole idea is to design skeleton templates and use clean and dry code to instanciate objects according to the operation as show in the `app.ts`
+The whole approach is completely object oriented. The basic design concept is:
+
+- design the templates in html
+- create classes for each operation.
+  - one to render the header,
+  - one to render the filter,
+  - one to render the jobs according to the filter
+  - one to render the job item
+  - one to render the filter
+- create the objects from a main `app.ts` file
 
 ```typescript
 // app.ts
@@ -73,7 +81,7 @@ App();
 
 ### Interfaces
 
-- created two main interfaces `Filter` and `Job` under `models`
+- created two main interfaces `Filter` and `Job` under `models` folder
 
 ### State management
 
@@ -99,12 +107,13 @@ App();
 
   - a `templateId`
   - a `hostElementId`
-  - a `insertAtStart` boolean param and
+  - a `insertAtStart` boolean param
   - a `clonedElementId`
 
 - It clones in memory the first child of the template content.
 - It assigns an `id` in the `clonedElement`
 - It uses the `attach` fn to insert the clonedElement to the `hostElement`.
+- Is used only as an abstract class. Can not be instantiated.
 
 #### `Button.ts`
 
@@ -140,7 +149,7 @@ This `button` component is a flexible `button`
 
 - Inherits the `Component` class
 - gets the template markup with id: `temp-job-item`
-- clones and comnfigures the element
+- clones and configures the element
 - adds new button components to act as filters
 
 #### `RenderHeader.ts`
@@ -160,8 +169,6 @@ This `button` component is a flexible `button`
 - Flexbox, CSS Grid
 - Mobile-first workflow
 - Typescript
-
-###
 
 ### What I learned
 
