@@ -12,7 +12,7 @@ export class JobItem extends Component {
     configureClonedElement() { }
     renderContent() {
         const img = this.cloneElement.querySelector("img");
-        img === null || img === void 0 ? void 0 : img.setAttribute("src", this.job.logo.replace("./images", "../../public"));
+        img === null || img === void 0 ? void 0 : img.setAttribute("src", this.job.logo);
         img === null || img === void 0 ? void 0 : img.setAttribute("alt", "logo");
         this.setContent("company");
         this.setContent("position");

@@ -16,7 +16,7 @@ export class JobItem extends Component<HTMLUListElement, HTMLLIElement> {
 
   renderContent(): void {
     const img = this.cloneElement.querySelector("img");
-    img?.setAttribute("src", this.job.logo.replace("./images", "../../public"));
+    img?.setAttribute("src", this.job.logo);
     img?.setAttribute("alt", "logo");
 
     this.setContent("company");
