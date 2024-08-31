@@ -40,7 +40,8 @@ Users are able to:
 
 ### Screenshot
 
-![desktop with filters on ](./design/job_listing_filters.png)
+![desktop with filters on ](./design/desktop-with-filter.png),
+![mobile with filters on ](./design/mobile-with-filter.png),
 
 ### Links
 
@@ -168,6 +169,7 @@ This `button` component is a flexible `button`
 - CSS custom properties
 - Flexbox, CSS Grid
 - Mobile-first workflow
+- Responsive
 - Typescript
 
 ### What I learned
