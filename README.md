@@ -45,8 +45,8 @@ Users are able to:
 
 ### Links
 
-- Solution URL: [Solution in github](https://github.com/Thanos-M11/job-listing-typescript)
-- Live Site URL: [in progress...]()
+- [Solution URL Github](https://github.com/Thanos-M11/job-listing-typescript)
+- [Live Site URL](https://thanos-m11.github.io/job-listing-typescript/)
 
 ## My process
 
