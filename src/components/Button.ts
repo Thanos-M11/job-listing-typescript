@@ -44,7 +44,7 @@ export class Button<T extends HTMLElement> {
     section.appendChild(this.currentElement);
     this.currentElement.classList.remove(this.className);
     const image = document.createElement("img");
-    image.setAttribute("src", "./public/icon-remove.svg");
+    image.setAttribute("src", "./images/icon-remove.svg");
     image.setAttribute("alt", "remove icon");
     image.addEventListener(
       "click",
