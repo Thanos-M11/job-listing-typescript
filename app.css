@@ -176,7 +176,7 @@ header {
   }
 }
 
-#logo {
+.logo {
   width: 7em;
   margin-top: -6em;
 }
