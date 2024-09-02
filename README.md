@@ -45,8 +45,9 @@ Users are able to:
 
 ### Links
 
-- [Solution URL Github](https://github.com/Thanos-M11/job-listing-typescript)
+- [Solution URL in Typescript](https://github.com/Thanos-M11/job-listing-typescript)
 - [Live Site URL](https://thanos-m11.github.io/job-listing-typescript/)
+- [Solution URL in Angular](https://github.com/Thanos-M11/angular-job-listing)
 
 ## My process
 
