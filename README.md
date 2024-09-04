@@ -47,7 +47,9 @@ Users are able to:
 
 - [Solution URL in Typescript](https://github.com/Thanos-M11/job-listing-typescript)
 - [Live Site URL](https://thanos-m11.github.io/job-listing-typescript/)
-- [Solution URL in Angular](https://github.com/Thanos-M11/angular-job-listing)
+- [Solution URL github branch in Angular with onDoCheck hook](https://github.com/Thanos-M11/angular-job-listing)
+- [Solution URL github branch in Angular with signals](https://github.com/Thanos-M11/angular-job-listing/tree/with-signals)
+-
 
 ## My process
 
