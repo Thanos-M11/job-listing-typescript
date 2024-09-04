@@ -12,6 +12,7 @@ This is a solution to the [Job listings with filtering challenge on Frontend Men
     - [Links](#links)
       - [Live Site URL](#live-site-url)
       - [Solutions URL in github](#solutions-url-in-github)
+      - [Versions in Angular](#versions-in-angular)
   - [My process](#my-process)
     - [Interfaces](#interfaces)
     - [State management](#state-management)
@@ -54,9 +55,12 @@ Users are able to:
   #### Solutions URL in github
 
 - [In Typescript only](https://github.com/Thanos-M11/job-listing-typescript)
-- [In Angular with onDoCheck hook](https://github.com/Thanos-M11/angular-job-listing)
-- [In Angular with signals](https://github.com/Thanos-M11/angular-job-listing/tree/with-signals)
-- [In Angular with RxJS and ngOnInit hook](https://github.com/Thanos-M11/angular-job-listing/tree/with-rxjs)
+
+  #### Versions in Angular
+
+- [with ngDoCheck hook](https://github.com/Thanos-M11/angular-job-listing)
+- [with signals](https://github.com/Thanos-M11/angular-job-listing/tree/with-signals)
+- [with RxJS and ngOnInit hook](https://github.com/Thanos-M11/angular-job-listing/tree/with-rxjs)
 
 ## My process
 
